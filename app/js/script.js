@@ -49,14 +49,6 @@ if (animItems.length > 0){
 
 
 //! burger menu
-// $('.header__burger').click(function(event) {
-// 	$('.header__burger, .header__menu').toggleClass('_active');
-// });
-
-// $('.header__menu').mouseout(function(event) {
-// 	$( '.header__burger', '.header__menu' ).removeClass('_active');
-// });
-
 $(document).on("click", ".header__burger", function(e) {
 	$('.header__burger, .header__menu').toggleClass('_active');
 });
