@@ -13,6 +13,7 @@ li,
 ol {
 	list-style: none;
 	padding-inline-start: 0;
+	margin: 0;
 }
 
 p,
@@ -25,5 +26,52 @@ a {
 }
 
 .container {
-	@include container(1230px);
+	@include container(1030px);
+}
+
+body {
+	font-family: "AvenirNextLTPro", sans-serif;
+	@include adaptive(font-size, 16, 14, 3);
+	font-weight: 400;
+	color: $text;
+}
+
+.text-demi {
+	font-weight: 550;
+}
+
+.text-none {
+	font-size: 0;
+}
+
+.title {
+	color: $title;
+	font-size: 30px;
+	font-weight: 550;
+	@include adaptive(font-size, 30, 20, 3);
+	@include adaptive(margin-bottom, 40, 20, 3);
+}
+
+.btn {
+	display: inline-block;
+	text-align: center;
+	min-width: 160px;
+	font-weight: 550;
+	padding: 13px 0;
+	color: #fff;
+	background-color: transparent;
+	cursor: pointer;
+	outline: transparent;
+	border: 1px solid #fff;
+	border-radius: 25px;
+	transition: background-color .3s, color .3s, transform 1s linear;
+
+	&:hover {
+		background-color: #fff;
+		color: #f45e1f;
+	}
+
+	&._active {
+		transform: rotateY(360deg);
+	}
 }
