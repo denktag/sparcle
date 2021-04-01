@@ -55,7 +55,8 @@ body {
 .btn {
 	display: inline-block;
 	text-align: center;
-	min-width: 160px;
+	max-width: 160px;
+	width: 100%;
 	font-weight: 550;
 	padding: 13px 0;
 	color: #fff;
