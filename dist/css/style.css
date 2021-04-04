@@ -1147,6 +1147,7 @@ body.lock {
     top: 80px;
     left: 0;
     opacity: 0;
+    visibility: hidden;
     background-color: #cccccc;
     -webkit-transition: all .3s;
     -o-transition: all .3s;
@@ -1156,6 +1157,7 @@ body.lock {
 
   .header__menu._active {
     opacity: 1;
+    visibility: visible;
     height: 290px;
     padding-top: 20px;
   }

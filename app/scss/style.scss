@@ -161,12 +161,14 @@
 			top: 80px;
 			left: 0;
 			opacity: 0;
+			visibility: hidden;
 			background-color: rgb(204, 204, 204);
 			transition: all .3s;
 			border: none;
 
 			&._active {
 				opacity: 1;
+				visibility: visible;
 				height: 290px;
 				padding-top: 20px;
 			}
