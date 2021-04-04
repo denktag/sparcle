@@ -172,3 +172,46 @@ body {
 		}
 	}
 }
+
+// scroll-up start
+.scroll-up {
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	background-color: rgba(0, 0, 0, 0.2);
+	display: inline-block;
+	font-family: 'icomoon';
+	color: rgba(255, 255, 255, .5);
+	font-size: 30px;
+	text-align: center;
+	z-index: 100;
+	border-radius: 50%;
+	padding: 10px;
+	text-decoration: none;
+	transition: all .3s;
+
+	&::before {
+		content: "\ea32";
+	}
+
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.5);
+		color: rgba(255, 255, 255, 1);
+	}
+}
+
+@media (max-width: 768px) {
+	.scroll-up {
+		right: 30px;
+		bottom: 30px;
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 576px) {
+	.scroll-up {
+		right: 20px;
+		bottom: 20px;
+	}
+}
+// scroll-up end

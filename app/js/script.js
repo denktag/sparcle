@@ -68,6 +68,13 @@ $(document).on("click", ".header__item-link", function(e) {
 	$('body, html').animate({scrollTop: top}, 800);
 });
 
+$(document).on("click", ".header__btn", function(e) {
+	e.preventDefault();
+	let id  = $(this).attr('href');
+	let top = $(id).offset().top;
+	$('body, html').animate({scrollTop: top}, 800);
+});
+
 $(document).on("click", ".scroll-up", function(e) {
 	e.preventDefault();
 	$('body, html').animate({scrollTop: 0}, 800);

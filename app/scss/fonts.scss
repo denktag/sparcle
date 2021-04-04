@@ -1,3 +1,23 @@
 @include font("AvenirNextLTPro", "AvenirNextLTPro-Bold", "700", "normal");
 @include font("AvenirNextLTPro", "AvenirNextLTPro-Demi", "500", "normal");
 @include font("AvenirNextLTPro", "AvenirNextLTPro-Regular", "400", "normal");
+@include font("icomoon", "icomoon", "400", "normal");
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-up:before {
+  content: "\ea32";
+}

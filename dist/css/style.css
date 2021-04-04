@@ -22,6 +22,33 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "icomoon";
+  font-display: swap;
+  src: url("../fonts/icomoon.woff") format("woff"), url("../fonts/icomoon.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-up:before {
+  content: "\ea32";
+}
+
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -225,6 +252,34 @@ body.lock {
 
 .popup__btn:hover {
   background-color: #f45e1f;
+}
+
+.scroll-up {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  font-family: 'icomoon';
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 30px;
+  text-align: center;
+  z-index: 100;
+  border-radius: 50%;
+  padding: 10px;
+  text-decoration: none;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+.scroll-up::before {
+  content: "\ea32";
+}
+
+.scroll-up:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .header {
@@ -1143,6 +1198,12 @@ body.lock {
 }
 
 @media (max-width: 768px) {
+  .scroll-up {
+    right: 30px;
+    bottom: 30px;
+    font-size: 20px;
+  }
+
   .header__bottom {
     padding: 70px 0 120px 0px;
   }
@@ -1263,6 +1324,11 @@ body.lock {
 }
 
 @media (max-width: 576px) {
+  .scroll-up {
+    right: 20px;
+    bottom: 20px;
+  }
+
   .header .logo__img {
     max-width: 80%;
   }
