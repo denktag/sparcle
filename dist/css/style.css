@@ -70,6 +70,10 @@ body {
   color: #7c7c7c;
 }
 
+body.lock {
+  overflow: hidden;
+}
+
 .text-demi {
   font-weight: 550;
 }
@@ -116,13 +120,131 @@ body {
   transform: rotateY(360deg);
 }
 
+.popup {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.popup.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup.open .popup__content {
+  opacity: 1;
+  -webkit-transform: perspective(600px) translate(0, 0) rotateX(0);
+  transform: perspective(600px) translate(0, 0) rotateX(0);
+}
+
+.popup__body {
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 30px 10px;
+}
+
+.popup__content {
+  background-color: #ccc;
+  position: relative;
+  padding: 30px 50px;
+  max-width: 500px;
+  width: 100%;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+  opacity: 0;
+  -webkit-transform: perspective(600px) translate(0, -100%) rotateX(45deg);
+  transform: perspective(600px) translate(0, -100%) rotateX(45deg);
+}
+
+.popup__close {
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 550;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+.popup__close:hover {
+  color: #000;
+}
+
+.popup__title {
+  text-align: center;
+}
+
+.popup__inp {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #273164;
+  margin-bottom: 20px;
+  outline: transparent;
+}
+
+.popup__btn {
+  display: block;
+  margin: 50px auto 10px;
+  max-width: 160px;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  outline: transparent;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  color: #000;
+  font-weight: 550;
+}
+
+.popup__btn:hover {
+  background-color: #f45e1f;
+}
+
 .header {
   position: relative;
   color: #fff;
-  background-image: url("../img/header-bg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  position: relative;
+}
+
+.header__bg {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.header__bg-image {
+  max-width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .header__container {
@@ -142,6 +264,10 @@ body {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+}
+
+.header .logo {
+  margin-top: -10px;
 }
 
 .header__burger {
@@ -193,7 +319,7 @@ body {
 .header__title {
   max-width: 830px;
   margin-bottom: 22px;
-  font-size: calc(30px + 32 * ((100vw - 320px) / 1600));
+  font-size: calc(28px + 34 * ((100vw - 320px) / 1600));
   font-weight: 700;
 }
 
@@ -359,8 +485,8 @@ body {
 
 .team::before {
   content: '';
-  width: calc(5px + 550 * ((100vw - 320px) / 1600));
-  height: calc(20px + 470 * ((100vw - 320px) / 1600));
+  width: calc(70px + 485 * ((100vw - 320px) / 1600));
+  height: calc(80px + 410 * ((100vw - 320px) / 1600));
   background-image: url("../img/decor-hand.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -611,26 +737,6 @@ body {
   outline: transparent;
 }
 
-.booking .form__inp::-webkit-input-placeholder {
-  color: #fff;
-}
-
-.booking .form__inp::-moz-placeholder {
-  color: #fff;
-}
-
-.booking .form__inp:-ms-input-placeholder {
-  color: #fff;
-}
-
-.booking .form__inp::-ms-input-placeholder {
-  color: #fff;
-}
-
-.booking .form__inp::placeholder {
-  color: #fff;
-}
-
 .booking .form__btn {
   margin-top: 30px;
   color: #f45e1f;
@@ -708,7 +814,6 @@ body {
 .reviews__item {
   max-width: 400px;
   width: 100%;
-  height: 400px;
   background-color: #fff;
   margin-right: 20px;
   padding: 30px;
@@ -915,8 +1020,11 @@ body {
     position: relative;
     width: 30px;
     height: 20px;
-    margin-left: 45px;
+    margin: 0 20px;
     cursor: pointer;
+    -webkit-box-ordinal-group: 4;
+    -ms-flex-order: 3;
+    order: 3;
   }
 
   .header__burger::before,
@@ -1022,11 +1130,244 @@ body {
   }
 
   .header__bottom {
-    padding: 190px 0 410px 20px;
+    padding: 110px 0 180px 0px;
+  }
+
+  .team__image {
+    width: 60%;
+  }
+
+  .booking__item--subtotal {
+    padding: 40px;
   }
 }
 
-.webp .header { background-image: url(../img/header-bg.webp); }
+@media (max-width: 768px) {
+  .header__bottom {
+    padding: 70px 0 120px 0px;
+  }
+
+  .type__inner {
+    display: block;
+  }
+
+  .type__item {
+    margin: 0 auto;
+  }
+
+  .type__item:first-child {
+    margin: 0 auto 30px;
+  }
+
+  .advantages__inner {
+    display: block;
+    margin-bottom: 150px;
+  }
+
+  .advantages__item:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .team::before {
+    bottom: 200px;
+  }
+
+  .booking__inner {
+    display: block;
+  }
+
+  .booking__item {
+    max-width: 100%;
+  }
+
+  .booking__item--subtotal {
+    margin: 30px 0 0 0;
+  }
+
+  .booking__descr {
+    margin-bottom: 30px;
+  }
+
+  .booking__type,
+  .booking__buttons {
+    text-align: center;
+  }
+
+  .booking .count {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .reviews__inner {
+    display: block;
+  }
+
+  .reviews__inner._active .reviews__item--1 {
+    -webkit-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+  }
+
+  .reviews__inner._active .reviews__item--2 {
+    -webkit-transition-delay: .2s;
+    -o-transition-delay: .2s;
+    transition-delay: .2s;
+  }
+
+  .reviews__inner._active .reviews__item--3 {
+    -webkit-transition-delay: .5s;
+    -o-transition-delay: .5s;
+    transition-delay: .5s;
+  }
+
+  .reviews__item {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .reviews__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .reviews__comments {
+    max-height: 170px;
+    height: 100%;
+  }
+
+  .footer {
+    margin-bottom: 0;
+  }
+
+  .footer__inner {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .footer__item {
+    max-width: 50%;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .footer__title {
+    margin-bottom: 20px;
+  }
+
+  .footer__title--logo {
+    -webkit-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 576px) {
+  .header .logo__img {
+    max-width: 80%;
+  }
+
+  .header__quote {
+    padding: 10px 0;
+    max-width: 140px;
+  }
+
+  .header__burger {
+    margin: 0 10px 0 20px;
+  }
+
+  .team::before {
+    bottom: -30px;
+  }
+
+  .team__image {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .header__buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+
+  .header__btn {
+    padding: 10px 0;
+    max-width: 130px;
+  }
+
+  .type__item {
+    max-width: 280px;
+  }
+
+  .team::before {
+    display: none;
+  }
+
+  .booking__item--subtotal {
+    padding: 30px 15px;
+  }
+
+  .booking__btn {
+    max-width: 125px;
+    padding: 10px 0;
+  }
+
+  .booking__btn:first-child {
+    margin-right: 15px;
+  }
+
+  .booking__subtotal {
+    font-size: 25px;
+  }
+
+  .booking__cost {
+    font-size: 21px;
+    margin-left: 20px;
+  }
+
+  .booking .form__btn {
+    margin-top: 20px;
+  }
+
+  .reviews__link {
+    max-width: 128px;
+  }
+
+  .reviews__link:first-child {
+    margin-right: 10px;
+  }
+
+  .footer {
+    margin-bottom: 40px;
+  }
+
+  .footer__inner {
+    display: block;
+  }
+
+  .footer__item {
+    max-width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .footer__item:last-child {
+    margin-bottom: 20px;
+  }
+
+  .footer__title {
+    margin-bottom: 15px;
+  }
+
+  .footer__phone,
+  .footer__email {
+    display: block;
+  }
+}
 
 .webp .team::before { background-image: url(../img/decor-hand.webp); }
 

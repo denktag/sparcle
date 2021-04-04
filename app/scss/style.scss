@@ -5,10 +5,20 @@
 .header {
 	position: relative;
 	color: #fff;
-	background-image: url('../img/header-bg.png');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
+
+	position: relative;
+	&__bg {
+		position: absolute;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__bg-image {
+		max-width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 
 	&__container {
 		@include container(1230px);
@@ -21,7 +31,9 @@
 		justify-content: space-between;
 	}
 
-	
+	.logo {
+		margin-top: -10px;
+	}
 
 	&__burger {
 		display: none;
@@ -66,7 +78,7 @@
 	&__title {
 		max-width: 830px;
 		margin-bottom: 22px;
-		@include adaptive(font-size, 62, 30, 3);
+		@include adaptive(font-size, 62, 28, 3);
 		font-weight: 700;
 	}
 
@@ -91,8 +103,9 @@
 			position: relative;
 			width: 30px;
 			height: 20px;
-			margin-left: 45px;
+			margin: 0 20px;
 			cursor: pointer;
+			order: 3;
 
 			&::before,
 			&::after {
@@ -170,10 +183,6 @@
 			margin-bottom: 10px;
 			cursor: pointer;
 
-			&:last-child {
-				// margin-right: 30px;
-			}
-
 			&:hover {
 				.header__item-link {
 					text-shadow: 0px 0px 1px #273164;
@@ -190,14 +199,61 @@
 		}
 
 		&__bottom {
-			padding: 190px 0 410px 20px;
+			padding: 110px 0 180px 0px;
 		}
 	}
 }
 
 @media (max-width: 768px) {
-	
+	.header {
+		&__bottom {
+			padding: 70px 0 120px 0px;
+		}
+	}
 }
+
+@media (max-width: 576px) {
+	.header {
+		.logo {
+			&__img {
+				max-width: 80%;
+			}
+		}
+
+		&__quote {
+			padding: 10px 0;
+			max-width: 140px;
+		}
+
+		&__burger {
+			margin: 0 10px 0 20px;
+		}
+
+		&__bottom {
+			// padding: 70px 0 120px 0px;
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.header {
+
+		&__buttons {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		&__btn {
+			padding: 10px 0;
+			max-width: 130px;
+		}
+
+		&__bottom {
+			// padding: 50px 0 100px 0px;
+		}
+	}
+}
+
 
 
 .type {
@@ -296,6 +352,31 @@
 	}
 }
 
+@media (max-width: 768px) {
+	.type {
+		&__inner {
+			display: block;
+		}
+
+		&__item {
+			margin: 0 auto;
+
+			&:first-child {
+				margin: 0 auto 30px;
+			}
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.type {
+		&__item {
+			max-width: 280px
+		}
+	}
+}
+
+
 .advantages {
 	@include adaptive(margin-bottom, 150, 30, 3);
 
@@ -316,6 +397,22 @@
 	}
 }
 
+@media (max-width: 768px) {
+	.advantages {
+		&__inner {
+			display: block;
+			margin-bottom: 150px;
+		}
+
+		&__item {
+			&:nth-child(2) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+
 .team {
 	background-color: $bg;
 	@include adaptive(margin-bottom, 160, 30, 3);
@@ -324,8 +421,8 @@
 	position: relative;
 	&::before {
 		content: '';
-		@include adaptive(width, 555, 5, 3);
-		@include adaptive(height, 490, 20, 3);
+		@include adaptive(width, 555, 70, 3);
+		@include adaptive(height, 490, 80, 3);
 		background-image: url('../img/decor-hand.png');
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -381,6 +478,47 @@
 		}
 	}
 }
+
+@media (max-width: 992px) {
+	.team {
+		&__image {
+			width: 60%;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.team {
+
+		&::before {
+			bottom: 200px;
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.team {
+
+		&::before {
+			bottom: -30px;
+		}
+
+		&__image {
+			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.team {
+
+		&::before {
+			display: none;
+		}
+	}
+}
+
+
 
 .booking {
 	@include adaptive(margin-bottom, 160, 30, 3);
@@ -553,10 +691,6 @@
 			padding: 7px 0;
 			color: #fff;
 			outline: transparent;
-			
-			&::placeholder {
-				color: #fff;
-			}
 		}
 
 		&__btn {
@@ -597,6 +731,81 @@
 	}
 }
 
+@media (max-width: 992px) {
+	.booking {
+		&__item {
+			&--subtotal {
+				padding: 40px;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.booking {
+		&__inner {
+			display: block;
+		}
+
+		&__item {
+			max-width: 100%;
+
+			&--subtotal {
+				margin: 30px 0 0 0;
+			}
+		}
+
+		&__descr {
+			margin-bottom: 30px;
+		}
+
+		&__type,
+		&__buttons {
+			text-align: center;
+		}
+
+		.count {
+			justify-content: center;
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.booking {
+		&__item {
+			&--subtotal {
+				padding: 30px 15px;
+			}
+		}
+
+		&__btn {
+			max-width: 125px;
+			padding: 10px 0;
+
+			&:first-child {
+				margin-right: 15px;
+			}
+		}
+
+		&__subtotal {
+			font-size: 25px;
+		}
+
+		&__cost {
+			font-size: 21px;
+			margin-left: 20px;
+		}
+
+		.form {
+			&__btn {
+				margin-top: 20px;
+			}
+		}
+	}
+}
+
+
+
 .reviews {
 	background-color: $bg;
 	@include adaptive(padding-top, 160, 30, 3);
@@ -629,7 +838,6 @@
 	&__item {
 		max-width: 400px;
 		width: 100%;
-		height: 400px;
 		background-color: #fff;
 		margin-right: 20px;
 		padding: 30px;
@@ -712,6 +920,57 @@
 		}
 	}
 }
+
+@media (max-width: 768px) {
+	.reviews {
+		&__inner {
+			display: block;
+
+			&._active {
+				.reviews__item--1 {
+					transition-delay: 0s;
+				}
+
+				.reviews__item--2 {
+					transition-delay: .2s;
+				}
+	
+				.reviews__item--3 {
+					transition-delay: .5s;
+				}
+			}
+		}
+
+		&__item {
+			max-width: 100%;
+			margin-right: 0;
+			margin-bottom: 20px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&__comments {
+			max-height: 170px;
+			height: 100%;
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.reviews {
+		&__link {
+			max-width: 128px;
+			
+			&:first-child {
+				margin-right: 10px;
+			}
+		}
+	}
+}
+
+
 
 .footer {
 	@include adaptive(margin-bottom, 110, 30, 3);
@@ -804,6 +1063,60 @@
 
 		&:hover {
 			text-shadow: 1px 1px 2px #f45e1f;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.footer {
+		margin-bottom: 0;
+
+		&__inner {
+			flex-wrap: wrap;
+		}
+
+		&__item {
+			max-width: 50%;
+			margin-bottom: 50px;
+			text-align: center;
+
+		}
+
+		&__title {
+			margin-bottom: 20px;
+
+			&--logo {
+				transform: translateY(-6px);
+			}
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.footer {
+		margin-bottom: 40px;
+
+		&__inner {
+			display: block;
+		}
+
+		&__item {
+			max-width: 100%;
+			margin-bottom: 50px;
+			text-align: center;
+
+			&:last-child {
+				margin-bottom: 20px;
+			}
+		}
+
+		&__title {
+			margin-bottom: 15px;
+		}
+
+		&__phone,
+		&__email {
+			display: block;
 		}
 	}
 }

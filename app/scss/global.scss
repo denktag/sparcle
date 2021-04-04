@@ -34,6 +34,10 @@ body {
 	@include adaptive(font-size, 16, 14, 3);
 	font-weight: 400;
 	color: $text;
+
+	&.lock {
+		overflow: hidden;
+	}
 }
 
 .text-demi {
@@ -74,5 +78,97 @@ body {
 
 	&._active {
 		transform: rotateY(360deg);
+	}
+}
+
+.popup {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.7);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	transition: all .5s;
+	opacity: 0;
+	visibility: hidden;
+
+	&.open {
+		opacity: 1;
+		visibility: visible;
+
+		.popup__content {
+			opacity: 1;
+			transform: perspective(600px) translate(0, 0) rotateX(0);
+		}
+	}
+
+	&__body {
+		min-height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 30px 10px;
+	}
+
+	&__content {
+		background-color: #ccc;
+		position: relative;
+		padding: 30px 50px;
+		max-width: 500px;
+		width: 100%;
+		transition: all .5s;
+		opacity: 0;
+		transform: perspective(600px) translate(0, -100%) rotateX(45deg);
+	}
+
+	&__close {
+		position: absolute;
+		right: 15px;
+		top: 5px;
+		font-size: 30px;
+		color: rgba(0, 0, 0, 0.3);
+		font-weight: 550;
+		transition: all .3s;
+
+		&:hover {
+			color: #000;
+		}
+	}
+
+	&__title {
+		text-align: center;
+	}
+
+	&__inp {
+		display: block;
+		width: 100%;
+		padding: 10px 0;
+		background-color: transparent;
+		border: none;
+		border-bottom: 1px solid $title;
+		margin-bottom: 20px;
+		outline: transparent;
+		
+	}
+
+	&__btn {
+		display: block;
+		margin: 50px auto 10px;
+		max-width: 160px;
+		width: 100%;
+		padding: 12px 0;
+		border-radius: 30px;
+		border: none;
+		cursor: pointer;
+		outline: transparent;
+		transition: all .3s;
+		color: #000;
+		font-weight: 550;
+
+		&:hover {
+			background-color: #f45e1f;
+		}
 	}
 }
