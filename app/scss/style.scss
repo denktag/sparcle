@@ -253,7 +253,6 @@
 
 .type {
 	background-color: $bg;
-	@include adaptive(margin-bottom, 130, 30, 3);
 
 	&__inner {
 		@include adaptive(padding-top, 110, 30, 3);
@@ -373,6 +372,7 @@
 
 
 .advantages {
+	@include adaptive(padding-top, 130, 30, 3);
 	@include adaptive(margin-bottom, 150, 30, 3);
 
 	&__inner {
@@ -410,7 +410,6 @@
 
 .team {
 	background-color: $bg;
-	@include adaptive(margin-bottom, 160, 30, 3);
 	@include adaptive(padding-bottom, 80, 30, 3);
 
 	position: relative;
@@ -516,6 +515,7 @@
 
 
 .booking {
+	@include adaptive(padding-top, 160, 30, 3);
 	@include adaptive(margin-bottom, 160, 30, 3);
 
 	&__inner {

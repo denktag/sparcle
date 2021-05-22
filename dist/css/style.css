@@ -391,7 +391,6 @@ body.lock {
 
 .type {
   background-color: #f6f7fb;
-  margin-bottom: calc(30px + 100 * ((100vw - 320px) / 1600));
 }
 
 .type__inner {
@@ -511,6 +510,7 @@ body.lock {
 }
 
 .advantages {
+  padding-top: calc(30px + 100 * ((100vw - 320px) / 1600));
   margin-bottom: calc(30px + 120 * ((100vw - 320px) / 1600));
 }
 
@@ -534,7 +534,6 @@ body.lock {
 
 .team {
   background-color: #f6f7fb;
-  margin-bottom: calc(30px + 130 * ((100vw - 320px) / 1600));
   padding-bottom: calc(30px + 50 * ((100vw - 320px) / 1600));
   position: relative;
 }
@@ -600,6 +599,7 @@ body.lock {
 }
 
 .booking {
+  padding-top: calc(30px + 130 * ((100vw - 320px) / 1600));
   margin-bottom: calc(30px + 130 * ((100vw - 320px) / 1600));
 }
 
