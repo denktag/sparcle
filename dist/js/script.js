@@ -233,6 +233,29 @@ document.addEventListener('keydown', function (e) {
 
 
 
+//! QUANTITY счетчик
+let quantityButtons = document.querySelectorAll('.quantity__button');
+if (quantityButtons.length > 0) {
+	for (let index = 0; index < quantityButtons.length; index++) {
+		const quantityButton = quantityButtons[index];
+		quantityButton.addEventListener("click", function (e) {
+			let value = parseInt(quantityButton.closest('.quantity').querySelector('input').value);
+			if (quantityButton.classList.contains('quantity__button-plus')) {
+				value++;
+			} else {
+				value = value - 1;
+				if (value < 1) {
+					value = 0
+				}
+			}
+			quantityButton.closest('.quantity').querySelector('input').value = value;
+		});
+	}
+}
+
+
+
+
 
 //! Определение поддержки браузером формата webp для использования webp в свойстве background-image в scss
 function testWebP(callback) {
